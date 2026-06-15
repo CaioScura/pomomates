@@ -1,4 +1,4 @@
-# POMOMATES 🍅
+# 🍅 POMOMATES 
 
 O **Pomomates** é um app que atua como um temporizador de foco, com ênfase em tempo de estudo, ajudando a evitar desvios de atenção durante tarefas atuando como um temporizador pomodoro. 
 Além disso, é onde os usuários compartilham entre si fotos tiradas do seu período de foco em tempo real, dentro de um grupo pré-formado de amigos!
@@ -18,18 +18,25 @@ Além disso, é onde os usuários compartilham entre si fotos tiradas do seu per
 - HTML5
 - SCSS
 
-## 🚀 Como executar
-
 ### Pré-requisitos
+- Node.js 22
+- Angular CLI
+- Ionic CLI
 
 ### Instalação
 
 ```bash
-git clone https://github.com/seuusuario/projeto.git
+git clone https://github.com/seuusuario/pomomates.git
 
-cd projeto
+cd pomomates
 
 npm install
+```
+
+### 🚀 Executando o projeto
+
+```bash
+ionic serve
 ```
 
 ## 👨‍💻 Equipe
