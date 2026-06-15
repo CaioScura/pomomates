@@ -1,4 +1,7 @@
-# 🍅 POMOMATES 
+<h1 class="display: flex; align-items: center;">
+  <img src="src/assets/img/tomatinho2.svg" width="40" alt="Logo POMOMATES">
+  POMOMATES
+</h1>
 
 O **Pomomates** é um app que atua como um temporizador de foco, com ênfase em tempo de estudo, ajudando a evitar desvios de atenção durante tarefas atuando como um temporizador pomodoro. 
 Além disso, é onde os usuários compartilham entre si fotos tiradas do seu período de foco em tempo real, dentro de um grupo pré-formado de amigos!
