@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent, IonButton } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,23 @@ register();
   imports: [CommonModule, IonContent, IonButton],
 })
 export class OnboardingComponent {
+  @ViewChild('onboardingSwiper') swiperRef!: ElementRef;
+
   constructor(private router: Router) {}
+
+  onNextClick() {
+    const swiper = this.swiperRef.nativeElement.swiper;
+
+    if (swiper.isEnd) {
+      this.goToRegister();
+    } else {
+      swiper.slideNext();
+    }
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
 
   goToLogin() {
     this.router.navigate(['/login']);
