@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { chatboxOutline, playCircle, playOutline, statsChartOutline, search, menuOutline, notificationsOutline } from 'ionicons/icons';
 
-
+import { StudyCardComponent } from '../components/study-card/study-card.component';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +30,8 @@ import { chatboxOutline, playCircle, playOutline, statsChartOutline, search, men
     IonContent,
     IonButton,
     IonButtons,
-    IonHeader, IonIcon, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar
+    IonHeader, IonIcon, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar,
+    StudyCardComponent
   ],
 })
 

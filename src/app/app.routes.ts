@@ -29,8 +29,8 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.component').then((m) => m.HomeComponent),
   },
 
-  {
-    path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
-  },
+  // {
+  //   path: 'tabs',
+  //   loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
+  // },
 ];
