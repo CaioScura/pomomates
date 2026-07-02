@@ -19,6 +19,7 @@ import { addIcons } from 'ionicons';
 import { chatboxOutline, playCircle, playOutline, statsChartOutline, search, menuOutline, notificationsOutline } from 'ionicons/icons';
 
 import { StudyCardComponent } from '../components/study-card/study-card.component';
+import { PomomateItemComponent } from '../components/pomomate-item/pomomate-item.component';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,7 @@ import { StudyCardComponent } from '../components/study-card/study-card.componen
     IonButton,
     IonButtons,
     IonHeader, IonIcon, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar,
-    StudyCardComponent
+    StudyCardComponent,PomomateItemComponent,
   ],
 })
 
