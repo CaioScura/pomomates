@@ -1,0 +1,40 @@
+.notification-page {
+  --background: var(--bg-white);
+  background: var(--bg-white);
+  min-height: 100%;
+}
+
+ion-header {
+  --box-shadow: none;
+  box-shadow: none;
+}
+
+ion-toolbar {
+  --background: var(--bg-white);
+  --color: var(--text-dark);
+  --border-width: 0;
+}
+
+// ion-title {
+//   text-align: center;
+//   font-size: 18px;
+//   font-weight: 700;
+// }
+
+.notification-content {
+  padding: 20px 16px;
+}
+
+.empty-state {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+  min-height: 200px;
+  text-align: center;
+
+  p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 15px;
+  }
+}

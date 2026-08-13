@@ -39,9 +39,13 @@ import { PomomateItemComponent } from '../components/pomomate-item/pomomate-item
 export class HomeComponent {
 
 
-  constructor() {
+  constructor(private router: Router) {
     addIcons({ chatboxOutline, playCircle, playOutline, statsChartOutline, search, menuOutline, notificationsOutline });
   }
+
+  goToNotification() {
+      this.router.navigate(['/notification']);
+    }
 
 
 }

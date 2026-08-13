@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent, IonButton } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-
+ 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
