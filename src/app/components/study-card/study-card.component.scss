@@ -100,3 +100,64 @@
   color:#f6b800;
   font-size:18px;
 }
+
+.menu-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 4px;
+  --padding-bottom: 4px;
+
+  margin: 0;
+}
+
+ion-popover.study-dropdown {
+  --width: 220px;
+  --border-radius: 6px;
+  --background: #ffffff;
+}
+
+ion-popover.study-dropdown::part(content) {
+  background: #ffffff;
+  border: 1px solid #B3B3B3;
+  border-radius: 4px;
+}
+
+.study-dropdown ion-list {
+  padding: 0;
+  background: #ffffff;
+}
+
+.study-dropdown ion-item {
+  --min-height: 42px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --background: #ffffff;
+  --background-hover: #F6E7E7;
+  --color: var(--text-dark);
+  --color-hover: var(--text-dark);
+  --ripple-color: #F6E7E7;
+  color: var(--text-dark);
+
+  font-size: 15px;
+}
+
+.study-dropdown ion-item::part(native) {
+  background: #ffffff;
+  color: var(--text-dark);
+}
+
+.study-dropdown ion-item::part(native):hover {
+  background: #F6E7E7;
+  color: var(--text-dark);
+}
+
+.study-dropdown ion-item:hover ion-icon,
+.study-dropdown ion-item:hover ion-label {
+  color: var(--text-dark);
+}
+
+.study-dropdown ion-icon {
+  font-size: 18px;
+  margin-right: 8px;
+  color: var(--text-dark);
+}

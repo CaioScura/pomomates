@@ -3,9 +3,40 @@
   <div class="header">
     <h2>Monitoria & estudo</h2>
 
-    <ion-button fill="clear" size="small">
-      <ion-icon name="ellipsis-horizontal" class="button-inner"></ion-icon>
+    <ion-button fill="clear" size="small" id="button-inner" fill="clear" (click)="abrirDropdown($event)">
+      <ion-icon name="ellipsis-horizontal" class="button-inner" (click)="abrirDropdown($event)"></ion-icon>
     </ion-button>
+
+    <ion-popover
+      [isOpen]="dropdownAberto"
+      [event]="eventoDropdown"
+      (didDismiss)="dropdownAberto = false"v
+      class="study-dropdown"
+    >
+      <ng-template>
+        <ion-list lines="none">
+
+          <ion-item button (click)="compartilharGrupo()">
+            <ion-icon
+              name="share-social-outline"
+              slot="start"
+            ></ion-icon>
+
+            <ion-label>Compartilhar grupo</ion-label>
+          </ion-item>
+
+          <ion-item button (click)="sairDoGrupo()">
+            <ion-icon
+              name="exit-outline"
+              slot="start"
+            ></ion-icon>
+
+            <ion-label>Sair do grupo</ion-label>
+          </ion-item>
+
+        </ion-list>
+      </ng-template>
+    </ion-popover>
   </div>
 
   <img
