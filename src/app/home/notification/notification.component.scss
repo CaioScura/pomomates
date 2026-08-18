@@ -38,3 +38,10 @@ ion-toolbar {
     font-size: 15px;
   }
 }
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

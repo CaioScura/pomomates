@@ -7,10 +7,11 @@
               <ion-toolbar>
 
                 <ion-buttons slot="start">
-                  <ion-button>
+                  <ion-button (click)="toggleSidebar()">
                     <ion-icon name="menu-outline"></ion-icon>
                   </ion-button>
                 </ion-buttons>
+
 
                 <ion-title>Bom te ver, Caiote!</ion-title>
 
@@ -96,6 +97,10 @@
       </ion-tabs>
     </div>
 
-
-
 </ion-content>
+
+<!-- so mostra o componente sidebar quando esta aberto -->
+      <app-sidebar-home
+          *ngIf="sidebarOpen"
+        (close)="toggleSidebar()">
+    </app-sidebar-home>

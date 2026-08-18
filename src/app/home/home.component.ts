@@ -20,6 +20,7 @@ import { chatboxOutline, playCircle, playOutline, statsChartOutline, search, men
 
 import { StudyCardComponent } from '../components/study-card/study-card.component';
 import { PomomateItemComponent } from '../components/pomomate-item/pomomate-item.component';
+import { SidebarHomeComponent } from './sidebar-home/sidebar-home/sidebar-home.component';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,7 @@ import { PomomateItemComponent } from '../components/pomomate-item/pomomate-item
     IonButton,
     IonButtons,
     IonHeader, IonIcon, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar,
-    StudyCardComponent,PomomateItemComponent,
+    StudyCardComponent, PomomateItemComponent, SidebarHomeComponent,
   ],
 })
 
@@ -44,8 +45,16 @@ export class HomeComponent {
   }
 
   goToNotification() {
-      this.router.navigate(['/notification']);
-    }
+    this.router.navigate(['/notification']);
+  }
+
+  // sidebar
+  sidebarOpen = false;
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+
 
 
 }
