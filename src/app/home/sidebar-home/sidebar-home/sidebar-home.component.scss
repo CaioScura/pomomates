@@ -32,9 +32,8 @@
 .sidebar-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  padding: 16px;
+  gap: 16px;
+  padding: 32px;
 }
 
 .sidebar-header h2 {

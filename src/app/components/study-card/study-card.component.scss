@@ -45,25 +45,7 @@
 
 }
 
-.avatar{
 
-  position:relative;
-
-  width:42px;
-  height:42px;
-
-  border-radius:50%;
-
-  background:#f2c1c1;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  font-weight:600;
-
-  color:#8a4a4a;
-}
 
 .button-inner{
     color:var(--text-dark);
@@ -91,15 +73,6 @@
   text-transform:uppercase;
 }
 
-.crown{
-  position:absolute;
-  top:-9px;
-  left:50%;
-  transform:translateX(-50%);
-
-  color:#f6b800;
-  font-size:18px;
-}
 
 .menu-button {
   --padding-start: 8px;
