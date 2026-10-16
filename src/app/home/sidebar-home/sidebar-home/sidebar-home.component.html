@@ -3,25 +3,46 @@
   <div class="sidebar">
 
     <div class="sidebar-header">
-
-      <div class="avatar">
-        HA
-        <ion-icon
-          name="star"
-          class="crown">
-        </ion-icon>
-      </div>
-
+      <app-avatar initials="HA" [crown]="false"></app-avatar>
       <span class="label">Meu perfil</span>
-
     </div>
 
     <div class="sidebar-content">
+      <span class="title">Seus grupos</span>
+        <div class="group">
+          <app-avatar initials="FS" [crown]="false"></app-avatar>
+          <span class="label">7°B Filomena Silva</span>
+        </div>
 
-      
+        <div class="group">
+          <app-avatar initials="ME" [crown]="false"></app-avatar>
+          <span class="label">Monitoria & estudo</span>
+        </div>
 
-      
+        <div class="group">
+          <button class="novo-grupo-btn">
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <span class="label">Novo grupo</span>
+        </div>
+    </div>
 
+    <div class="sidebar-config">
+      <span class="title">Opções</span>
+        <div class="group">
+          <ion-icon name="settings-outline"></ion-icon>
+          <span class="label">Configurações</span>
+        </div>
+
+        <div class="group">
+          <ion-icon name="help-circle-outline"></ion-icon>
+          <span class="label">Ajdua e feedback</span>
+        </div>
+
+        <div class="group">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <span class="label">Sobre</span>
+        </div>
     </div>
 
   </div>

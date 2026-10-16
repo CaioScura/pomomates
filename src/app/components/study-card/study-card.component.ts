@@ -16,6 +16,8 @@ import {
   IonItem,
   IonLabel } from '@ionic/angular/standalone';
 
+import { AvatarComponent } from '../avatar/avatar.component';
+
 @Component({
   selector: 'app-study-card',
   standalone: true,
@@ -29,7 +31,8 @@ import {
     IonContent,
     IonList,
     IonItem,
-    IonLabel
+    IonLabel,
+    AvatarComponent
   ]
 })
 

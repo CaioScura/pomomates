@@ -1,0 +1,35 @@
+.avatar{
+
+  position:relative;
+
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  background:#f2c1c1;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-weight:600;
+
+  color:#8a4a4a;
+
+  margin-right: 8px;
+}
+
+.crown{
+  position:absolute;
+  top:-9px;
+  left:50%;
+  transform:translateX(-50%);
+
+  color:#f6b800;
+  font-size:18px;
+}
+
+.pink{
+    background:#f6d5d5;
+}
