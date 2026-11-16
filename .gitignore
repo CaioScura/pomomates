@@ -17,3 +17,6 @@ Thumbs.db
 
 #pass
 databasepass.txt
+
+#arquivo de build do nestjs
+*.tsbuildinfo
