@@ -1,0 +1,19 @@
+flowchart TD
+    A["T05 Home ou T17 Meu perfil"] -->|"Iniciar pomodoro"| B["T07 Iniciar sessão"]
+    B --> C{"Sozinho ou em grupo?"}
+    C -->|"Sozinho"| D["T08 Sessão: Foco"]
+    C -->|"Em grupo: escolhe o grupo"| D
+    D --> E["T08 Sessão: Intervalo"]
+    E --> F{"Último ciclo?"}
+    F -->|"Não"| D
+    F -.->|"Sim"| G["T10 Registro de check-in"]
+    D -.->|"Abandonar pomodoro"| H["T09 Popup abandonar"]
+    E -.->|"Abandonar pomodoro"| H
+    H --> I{"Abandonar?"}
+    I -->|"Não"| D
+    I -.->|"Sim, abandonar"| X["Destino não definido"]
+    G -->|"Salvar check-in"| J["Feed dos grupos escolhidos"]
+    G -->|"Deletar"| K["T11 Popup deletar"]
+    K --> L{"Deletar?"}
+    L -->|"Fechar"| G
+    L -.->|"Sim, deletar"| M["Registro do pomodoro perdido"]

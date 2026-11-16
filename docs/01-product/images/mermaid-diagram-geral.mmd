@@ -1,0 +1,39 @@
+flowchart TD
+    T01["T01 Splash"] --> T02["T02 Onboarding"]
+    T02 -.-> T03["T03 Cadastro"]
+    T02 -.-> T04["T04 Login"]
+    T03 <-.-> T04
+    T04 -.-> T05["T05 Home"]
+    T03 -.-> T05
+
+    T05 -.->|"☰"| T06["T06 Menu lateral"]
+    T05 -.->|"sino"| T13["T13 Notificações"]
+    T05 -.->|"item do feed"| T12["T12 Visualizar check-in"]
+    T05 -.->|"Iniciar pomodoro"| T07["T07 Iniciar sessão"]
+    T05 -.->|"Relatório"| T15["T15 Relatório"]
+    T05 -.->|"Chat"| T16["T16 Chat"]
+    T05 -.->|"... do grupo"| T14["T14 Detalhes do grupo"]
+
+    T06 --> T17["T17 Meu perfil"]
+    T06 --> T18["T18 Configurações"]
+    T06 -.-> T14
+    T06 --> NG["Novo grupo"]:::naoDesenhada
+    T06 --> AJ["Ajuda e feedback"]:::naoDesenhada
+    T06 --> SO["Sobre"]:::naoDesenhada
+
+    T14 -.->|"Ver relatório"| T15
+    T14 -.->|"Ver chat"| T16
+
+    T17 --> T18
+    T17 -.->|"Iniciar pomodoro"| T07
+
+    T07 -.->|"Inidividual"| T08["T08 Sessão de pomodoro"]
+    T07 -.->|"Grupo"| T19["T19 Localizar sala"]
+    T19 -.->|"Iniciar"| T08["T08 Sessão de pomodoro"]
+    T08 -.->|"Abandonar pomodoro"| T09["T09 Popup abandonar"]
+    T09 -.->|"Não"| T08
+    T08 -.->|"fim dos ciclos"| T10["T10 Registro de check-in"]
+    T10 -.->|"Deletar"| T11["T11 Popup deletar"]
+    T11 -.->|"Fechar"| T10
+
+    classDef naoDesenhada stroke-dasharray: 5 5
