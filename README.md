@@ -34,10 +34,10 @@ Experiência visual agradável para tornar o estudo mais engajante.
 
 | Fase | Descrição | Status |
 | --- | --- | --- |
-| 1 | Consolidação do produto | 🔄 Em andamento |
-| 2 | Requisitos e regras de negócio | ⏳ Pendente |
-| 3 | Decisões técnicas (ADRs) | ⏳ Pendente |
-| 4 | Prova de conceito técnica | ⏳ Pendente |
+| 1 | Consolidação do produto | ✅ concluído |
+| 2 | Requisitos e regras de negócio | ✅ concluído |
+| 3 | Decisões técnicas (ADRs) | ✅ concluído |
+| 4 | Prova de conceito técnica | 🔄 Em andamento |
 | 5 | Arquitetura | ⏳ Pendente |
 | 6 | Modelagem de dados | ⏳ Pendente |
 | 7 | Contrato da API | ⏳ Pendente |
