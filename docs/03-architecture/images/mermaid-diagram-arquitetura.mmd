@@ -1,0 +1,17 @@
+flowchart LR
+    APP["📱 App<br/>React Native + Expo"]
+    API["⚙️ API<br/>NestJS"]
+
+    subgraph SUPABASE["Supabase"]
+        AUTH["🔐 Auth<br/>login e tokens"]
+        DB[("🗄️ Banco<br/>PostgreSQL")]
+        STORAGE["🖼️ Storage<br/>fotos"]
+    end
+
+    APP -->|"1. login (e-mail e senha)"| AUTH
+    AUTH -->|"token"| APP
+    APP -->|"2. requisições + token (Bearer)"| API
+    API -.->|"chaves públicas (JWKS), em cache"| AUTH
+    API -->|"Prisma"| DB
+    API -->|"gera link assinado"| STORAGE
+    APP -->|"3. envio da foto (link assinado)"| STORAGE 
