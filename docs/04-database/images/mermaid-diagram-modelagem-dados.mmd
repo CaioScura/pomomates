@@ -1,0 +1,59 @@
+erDiagram
+    profiles ||--o{ group_members : "participa"
+    groups ||--o{ group_members : "tem"
+    profiles ||--o{ groups : "cria"
+    profiles ||--o{ study_sessions : "faz"
+    study_sessions ||--o| check_ins : "gera"
+    profiles ||--o{ check_ins : "publica"
+    check_ins ||--o{ check_in_shares : "compartilhado em"
+    groups ||--o{ check_in_shares : "recebe"
+    check_ins ||--o{ comments : "tem"
+    profiles ||--o{ comments : "escreve"
+
+    profiles {
+        uuid id PK "mesmo id do Supabase Auth"
+        string name
+        string avatar_url
+        int focus_minutes
+        int break_minutes
+        int cycles
+    }
+    groups {
+        uuid id PK
+        string name
+        string description
+        string invite_code UK
+        uuid created_by_id FK
+    }
+    group_members {
+        uuid group_id PK,FK
+        uuid profile_id PK,FK
+        enum role "OWNER ou MEMBER"
+    }
+    study_sessions {
+        uuid id PK
+        uuid profile_id FK
+        enum status "IN_PROGRESS, COMPLETED, ABANDONED"
+        int cycles "cópia das configurações"
+        datetime started_at "relógio do servidor"
+        datetime ended_at
+    }
+    check_ins {
+        uuid id PK
+        uuid session_id FK,UK "um por sessão"
+        uuid profile_id FK
+        string photo_path
+        string title
+        string category
+    }
+    check_in_shares {
+        uuid check_in_id PK,FK
+        uuid group_id PK,FK
+    }
+    comments {
+        uuid id PK
+        uuid check_in_id FK
+        uuid profile_id FK
+        string content
+    }
+                                    
