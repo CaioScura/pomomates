@@ -12,15 +12,133 @@ datasource db {
   provider = "postgresql"
 }
 
+enum SessionMode {
+  SOLO
+  GROUP // depois do MVP
+}
+
+enum SessionStatus {
+  IN_PROGRESS
+  COMPLETED
+  ABANDONED
+}
+
+enum GroupRole {
+  OWNER
+  MEMBER
+}
+
 model Profile {
-  id                 String   @id @db.Uuid
-  name               String
-  avatarUrl          String?  @map("avatar_url")
-  focusMinutes       Int      @default(25) @map("focus_minutes")
-  breakMinutes       Int      @default(5) @map("break_minutes")
-  cycles             Int      @default(4)
-  createdAt          DateTime @default(now()) @map("created_at")
-  updatedAt          DateTime @updatedAt @map("updated_at")
+  id           String   @id @db.Uuid // mesmo id do usuário no Supabase Auth
+  name         String
+  avatarUrl    String?  @map("avatar_url")
+  focusMinutes Int      @default(25) @map("focus_minutes")
+  breakMinutes Int      @default(5) @map("break_minutes")
+  cycles       Int      @default(4)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  memberships   GroupMember[]
+  sessions      StudySession[]
+  checkIns      CheckIn[]
+  comments      Comment[]
+  createdGroups Group[]
 
   @@map("profiles")
+}
+
+model Group {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  description String?
+  coverUrl    String?  @map("cover_url")
+  inviteCode  String   @unique @map("invite_code") // código para entrar no grupo (D11)
+  createdById String   @map("created_by_id") @db.Uuid
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  createdBy Profile        @relation(fields: [createdById], references: [id])
+  members   GroupMember[]
+  shares    CheckInShare[]
+
+  @@map("groups")
+}
+
+model GroupMember {
+  groupId   String    @map("group_id") @db.Uuid
+  profileId String    @map("profile_id") @db.Uuid
+  role      GroupRole @default(MEMBER)
+  joinedAt  DateTime  @default(now()) @map("joined_at")
+
+  group   Group   @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@id([groupId, profileId]) // um usuário entra uma vez só em cada grupo
+  @@index([profileId])       // "quais são os meus grupos?"
+  @@map("group_members")
+}
+
+model StudySession {
+  id           String        @id @default(uuid()) @db.Uuid
+  profileId    String        @map("profile_id") @db.Uuid
+  mode         SessionMode   @default(SOLO)
+  status       SessionStatus @default(IN_PROGRESS)
+  cycles       Int           // cópia das configurações no início da sessão
+  focusMinutes Int           @map("focus_minutes")
+  breakMinutes Int           @map("break_minutes")
+  startedAt    DateTime      @default(now()) @map("started_at") // relógio do servidor
+  endedAt      DateTime?     @map("ended_at")
+
+  profile Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  checkIn CheckIn?
+
+  @@index([profileId, startedAt])
+  @@map("study_sessions")
+}
+
+model CheckIn {
+  id          String   @id @default(uuid()) @db.Uuid
+  sessionId   String   @unique @map("session_id") @db.Uuid // um check-in por sessão
+  profileId   String   @map("profile_id") @db.Uuid
+  photoPath   String?  @map("photo_path") // caminho no Supabase Storage (D01)
+  title       String?
+  description String?
+  category    String   @default("Estudo") // lista fixa quando a equipe definir (D20)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  session  StudySession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  profile  Profile        @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  shares   CheckInShare[]
+  comments Comment[]
+
+  @@index([profileId, createdAt]) // calendário do perfil e streak
+  @@map("check_ins")
+}
+
+model CheckInShare {
+  checkInId String   @map("check_in_id") @db.Uuid
+  groupId   String   @map("group_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+
+  checkIn CheckIn @relation(fields: [checkInId], references: [id], onDelete: Cascade)
+  group   Group   @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@id([checkInId, groupId])     // o mesmo check-in vai uma vez só para cada grupo
+  @@index([groupId, createdAt])  // feed e ranking do grupo
+  @@map("check_in_shares")
+}
+
+model Comment {
+  id        String   @id @default(uuid()) @db.Uuid
+  checkInId String   @map("check_in_id") @db.Uuid
+  profileId String   @map("profile_id") @db.Uuid
+  content   String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  checkIn CheckIn @relation(fields: [checkInId], references: [id], onDelete: Cascade)
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([checkInId, createdAt])
+  @@map("comments")
 }
